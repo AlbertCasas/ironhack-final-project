@@ -67,3 +67,7 @@ Common
 Lil Supa
 ```
 [Hip Hop Spotify Playlist](https://open.spotify.com/playlist/4vKftyhS1gQovakehVcq1u?si=a7a119382dfe40da)
+
+### 19/08
+
+Implement sing in and sign up pages
