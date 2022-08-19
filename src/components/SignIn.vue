@@ -1,18 +1,24 @@
 <template>
-  <div>
-    <h1>Sing in</h1>
-    <form action="" class="form">
+  <div class="container">
+    <div v-if="errorMsg">
+      <p>{{errorMsg}}</p>
+    </div>
+    <form class="form" @submit.prevent="signIn">
+      <h1>Log In to TaskApp</h1>
+      <p>Start Organazing your Tasks Today</p>
       <div class="form-input">
         <label for="email">Email</label>
-        <input type="email">
+        <input type="email" required id="email" v-model="email">
       </div>
       <div class="form-input">
         <label for="password">Password</label>
-        <input type="password">
+        <input type="password" id="password" v-model="password">
       </div>
+      <button class="button" type="submit">Log In</button>
+      <PersonalRouter :route="route" :buttonText="buttonText" />
     </form>
+    <img class="photo" src="https://assets.entrepreneur.com/content/3x2/2000/20190517204006-GettyImages-924558574.jpeg" alt="signin-img">
   </div>
-  <PersonalRouter :route="route" :buttonText="buttonText" />
   
   
 </template>
@@ -50,6 +56,7 @@ const signIn = async () => {
   try {
     // calls the user store and send the users info to backend to logIn
     await useUserStore().signIn(email.value, password.value);
+    console.log('hola');
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {
@@ -58,20 +65,35 @@ const signIn = async () => {
     // hides error message
     setTimeout(() => {
       errorMsg.value = null;
-    }, 3000);
+    }, 6000);
   }
 };
 </script>
 
 <style>
-.wu-text {
-  color: black;
+body {
+  background-color: #2364AA;
+  margin: 0;
+  padding: 0;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
+  background-color: beige;
+  padding: 2rem;
+}
+
+.form h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #2364AA;
+}
+
+.form p {
+  text-align: center;
 }
 
 .form-input {
@@ -81,10 +103,12 @@ const signIn = async () => {
 
 .input {
   color: black;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
+
+
 .button {
-  background-color: #4caf50; /* Green */
+  background-color: #2364aa; /* Green */
   border: none;
   color: white;
   padding: 10px 10px;
@@ -92,5 +116,10 @@ const signIn = async () => {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin-top: 1rem;
+}
+
+.photo {
+  width: 100%;
 }
 </style>

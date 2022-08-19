@@ -9,8 +9,8 @@ const routes = [
     path: "/auth",
     component: Auth,
     children: [
-      { path: "login", component: SignIn },
-      { path: "sign-up", component: SignUp },
+      { path: "login", name:"login", component: SignIn },
+      { path: "sign-up", name:"signUp", component: SignUp },
     ],
   },
   { path: "/", component: Home },

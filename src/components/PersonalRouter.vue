@@ -1,5 +1,8 @@
 <template>
-  <router-link :to="route">{{ buttonText }}</router-link>
+  <div>
+    <span>Don't have an account? </span>
+    <router-link class="router-link" :to="route">{{ buttonText }}</router-link>
+  </div>
 </template>
 
 <script setup>
@@ -9,4 +12,8 @@ defineProps({
 });
 </script>
 
-<style></style>
+<style>
+.router-link {
+  color: red;
+}
+</style>

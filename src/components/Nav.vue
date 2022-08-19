@@ -1,5 +1,15 @@
 <template>
-  <div>Nav Component</div>
+  <header>
+    <nav>
+      <div>
+        <img src="https://img.favpng.com/16/4/17/computer-icons-action-item-task-android-clip-art-png-favpng-qEkWRa0viGcdBEf3Yp3T6mkyz.jpg" alt="task">
+        <h1>Tasks App</h1>
+      </div>
+      <ul>
+        <li>Logout</li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <script setup>
