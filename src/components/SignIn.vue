@@ -1,7 +1,19 @@
 <template>
-  <div>Sign In</div>
+  <div>
+    <h1>Sing in</h1>
+    <form action="" class="form">
+      <div class="form-input">
+        <label for="email">Email</label>
+        <input type="email">
+      </div>
+      <div class="form-input">
+        <label for="password">Password</label>
+        <input type="password">
+      </div>
+    </form>
+  </div>
   <PersonalRouter :route="route" :buttonText="buttonText" />
-  <p>Time to build up the Final Project!</p>
+  
   
 </template>
 
@@ -15,7 +27,7 @@ import { storeToRefs } from "pinia";
 
 // Route Variables
 const route = "/auth/sign-up";
-const buttonText = "Test the Sign Up Route";
+const buttonText = "Sign Up";
 
 // Input Fields
 const email = ref("");
@@ -46,7 +58,7 @@ const signIn = async () => {
     // hides error message
     setTimeout(() => {
       errorMsg.value = null;
-    }, 5000);
+    }, 3000);
   }
 };
 </script>
@@ -61,6 +73,12 @@ const signIn = async () => {
   flex-direction: column;
   margin: 1rem 0;
 }
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
   color: black;
   margin-bottom: 1rem;
