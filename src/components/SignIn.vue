@@ -12,8 +12,8 @@
       </div>
       <div class="form-input">
         <label for="password">Password</label>
-        <input placeholder="Enter your password" class="input" type="{{hidePassword}}" id="password" v-model="password">
-        <i @click="passwordFieldType" class="fa-solid fa-eye"></i>
+        <input placeholder="Enter your password" class="input" :type="passwordFieldType" id="password" v-model="password">
+        <i @click="hidePassword" class="fa-solid fa-eye"></i>
       </div>
       <button class="button" type="submit">Log In</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
