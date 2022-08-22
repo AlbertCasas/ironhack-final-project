@@ -8,15 +8,15 @@
       <p>Start Organazing your Tasks Today</p>
       <div class="form-input">
         <label for="email">Email</label>
-        <input type="email" required id="email" v-model="email">
+        <input placeholder="Enter your email" class="input" type="email" required id="email" v-model="email">
       </div>
       <div class="form-input">
         <label for="password">Password</label>
-        <input type="password" id="password" v-model="password">
+        <input placeholder="Enter your password" class="input" type="password" id="password" v-model="password">
       </div>
       <div class="form-input">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="confirmPassword">
+        <input placeholder="Confirm your password" class="input" type="password" id="confirmPassword" v-model="confirmPassword">
       </div>
       <button class="button" type="submit">Register</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
@@ -85,4 +85,6 @@ const signUp = async () => {
 
 </script>
 
-<style></style>
+<style scoped>
+
+</style>

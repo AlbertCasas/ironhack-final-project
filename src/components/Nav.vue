@@ -1,27 +1,65 @@
 <template>
   <header>
-    <nav>
-      <div>
-        <img src="https://img.favpng.com/16/4/17/computer-icons-action-item-task-android-clip-art-png-favpng-qEkWRa0viGcdBEf3Yp3T6mkyz.jpg" alt="task">
-        <h1>Tasks App</h1>
+    <nav class="navbar">
+      <h1>Task App</h1>
+      <div class="user">
+        <p>Welcome {{cleanEmail}}</p>
+        <button @click="signOut">Sign Out</button>
       </div>
-      <ul>
-        <li>Logout</li>
-      </ul>
     </nav>
   </header>
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
+import { useUserStore } from "../stores/user";
+
 //constant to save a variable that will hold the use router method
+const redirect = useRouter();
 
 // constant to save a variable that will get the user from store with a computed function imported from vue
+const userStore = useUserStore();
 
 // constant that calls user email from the useUSerStore
+const email = userStore.user.email
 
 // constant that saves the user email and cleans out the @client from the user
+const removeEmail = email.split("@")
+const cleanEmail = removeEmail[0]
 
 // async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
+const signOut = async () => {
+  await useUserStore().signOut;
+  redirect.push({path:"/auth/login"});}
+
 </script>
 
-<style></style>
+<style scoped>
+
+.navbar {
+  width: 100%;
+  margin: 0;
+  height: 4rem;
+  display: flex;
+  justify-content: space-around;
+  background-color: #427AA1;
+  align-items: center;
+}
+
+.navbar h1 {
+  font-size: 2rem;
+}
+
+.user {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.user button {
+  background-color: transparent;
+  border: none;
+  color: blue;
+}
+
+</style>

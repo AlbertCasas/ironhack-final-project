@@ -1,17 +1,21 @@
 <template>
-  <div>hello</div>
   <Nav />
+  <NewTask />
   <router-view />
 </template>
 
 <script setup>
 import Nav from '../components/Nav.vue'
+import NewTask from '../components/NewTask.vue'
 
 
 </script>
 
 
-<style></style>
+<style>
+
+
+</style>
 
 <!-- 
 **Hints**

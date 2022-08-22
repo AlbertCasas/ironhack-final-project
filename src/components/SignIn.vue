@@ -8,11 +8,12 @@
       <p>Start Organazing your Tasks Today</p>
       <div class="form-input">
         <label for="email">Email</label>
-        <input type="email" required id="email" v-model="email">
+        <input placeholder="Enter your email" class="input" type="email" required id="email" v-model="email">
       </div>
       <div class="form-input">
         <label for="password">Password</label>
-        <input type="password" id="password" v-model="password">
+        <input placeholder="Enter your password" class="input" type="{{hidePassword}}" id="password" v-model="password">
+        <i @click="passwordFieldType" class="fa-solid fa-eye"></i>
       </div>
       <button class="button" type="submit">Log In</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
@@ -44,7 +45,8 @@ const errorMsg = ref("");
 
 //Show hide password variables
 const passwordFieldType = computed(() =>
-  hidePassword.value ? "password" : "text"
+  hidePassword.value ? "password" : "text",
+  
 );
 const hidePassword = ref(true);
 
@@ -71,17 +73,11 @@ const signIn = async () => {
 </script>
 
 <style>
-body {
-  background-color: #2364AA;
-  margin: 0;
-  padding: 0;
-}
 
 .form {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
-  background-color: beige;
   padding: 2rem;
 }
 
@@ -89,7 +85,7 @@ body {
   margin: 0;
   font-size: 1.5rem;
   text-align: center;
-  color: #2364AA;
+  color: #427AA1;
 }
 
 .form p {
@@ -99,16 +95,16 @@ body {
 .form-input {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .input {
-  color: black;
-  margin-bottom: 2rem;
+  height: 2rem;
 }
 
 
 .button {
-  background-color: #2364aa; /* Green */
+  background-color: #427AA1;
   border: none;
   color: white;
   padding: 10px 10px;
