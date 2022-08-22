@@ -13,7 +13,7 @@
       <div class="form-input">
         <label for="password">Password</label>
         <input placeholder="Enter your password" class="input" :type="passwordFieldType" id="password" v-model="password">
-        <i @click="hidePassword" class="fa-solid fa-eye"></i>
+        <i @click="hidePassword = !hidePassword" class="fa-solid fa-eye"></i>
       </div>
       <button class="button" type="submit">Log In</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
@@ -58,7 +58,6 @@ const signIn = async () => {
   try {
     // calls the user store and send the users info to backend to logIn
     await useUserStore().signIn(email.value, password.value);
-    console.log('hola');
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {

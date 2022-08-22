@@ -1,11 +1,27 @@
 <template>
-  <div>Task Item Component</div>
+  <div>
+    <div v-for="task in tasks" :key="task.id">
+    <h1>{{task.title}}</h1>
+  </div>
+  </div>
 </template>
 
 <script setup>
 // const emit = defineEmits([
 //   ENTER-EMITS-HERE
 // ])
+
+import {useTaskStore} from '../stores/task'
+import {ref} from 'vue'
+
+const tasks = ref([])
+
+const getTasks = async () => {
+  tasks.value = await useTaskStore().fetchTasks()
+
+}
+
+getTasks()
 
 // const props = defineProps(["ENTER-PROP-HERE"]);
 </script>
