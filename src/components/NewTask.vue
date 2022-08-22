@@ -8,7 +8,7 @@
         <h1>Add a new task</h1>
         <input type="text" placeholder="Enter task title" required v-model="taskTitle"/>
         <input type="text" placeholder="Enter task description" required v-model="taskDescription"/>
-        <button @click="addNewTask" type="submit">Add Task</button>
+        <button @click.prevent="addNewTask" type="submit">Add Task</button>
       </form>
     </div>
   </div>
