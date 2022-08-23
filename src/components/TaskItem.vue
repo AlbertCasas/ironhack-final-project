@@ -2,9 +2,10 @@
   <div>
     <div class="container">
       <div class="task-container" v-for="task in tasks" :key="task.id">
-        
+        <CardIcons :id = "task.id" @delete-task = "deleteTask"/>
         <h1>{{task.title}}</h1>
         <p>{{task.description}}</p>
+        
 
       </div>
   </div>
@@ -14,13 +15,20 @@
 <script setup>
   import {useTaskStore} from '../stores/task'
   import {ref, computed} from 'vue'
+  import CardIcons from '../components/CardIcons.vue'
 
 
 const emit = defineEmits([
-  "toggle-task", "edit-task", "delete-task"
+  "edit-task", "delete-task"
 ])
 
-const props = defineProps(["tasks"])
+const props = defineProps(["tasks", "id"])
+
+const deleteTask = (id) => {
+    emit("delete-task", id)
+}
+
+
 
 
 // const tasks = computed(() => useTaskStore().fetchTasks())
@@ -41,6 +49,7 @@ const props = defineProps(["tasks"])
   display: flex;
   flex-wrap: wrap;
 }
+
 
 .task-container {
   background-color: beige;
