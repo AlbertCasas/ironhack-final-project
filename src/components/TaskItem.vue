@@ -2,6 +2,7 @@
   <div>
     <div class="container">
       <div class="task-container" v-for="task in tasks" :key="task.id">
+        
         <h1>{{task.title}}</h1>
         <p>{{task.description}}</p>
 
@@ -11,21 +12,25 @@
 </template>
 
 <script setup>
+  import {useTaskStore} from '../stores/task'
+  import {ref, computed} from 'vue'
+
+
 const emit = defineEmits([
-  "add-new-task"
+  "toggle-task", "edit-task", "delete-task"
 ])
 
-import {useTaskStore} from '../stores/task'
-import {ref} from 'vue'
+const props = defineProps(["tasks"])
 
-const tasks = ref([])
 
-const getTasks = async () => {
-  tasks.value = await useTaskStore().fetchTasks()
+// const tasks = computed(() => useTaskStore().fetchTasks())
 
-}
+// const getTasks = async () => {
+//   tasks.value = await useTaskStore().fetchTasks()
 
-getTasks()
+// }
+
+// getTasks()
 
 // const props = defineProps(["ENTER-PROP-HERE"]);
 </script>
@@ -34,12 +39,13 @@ getTasks()
 
 .container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .task-container {
   background-color: beige;
-  max-width: 15rem;
-  height: 6rem;
+  width: 20rem;
+  height: 10rem;
   margin: 1rem;
 }
 

@@ -1,7 +1,7 @@
 <template>
   <Nav />
-  <NewTask />
-  <TaskItem />
+  <NewTask @add-new-task = "addNewTask"/>
+  <TaskItem :tasks = "tasks"/>
   <router-view />
 </template>
 
@@ -9,6 +9,28 @@
 import Nav from '../components/Nav.vue'
 import NewTask from '../components/NewTask.vue'
 import TaskItem from '../components/TaskItem.vue'
+import {useTaskStore} from '../stores/task'
+import { ref, computed} from 'vue'
+
+
+
+const addNewTask = async (title, description) => {
+  
+  useTaskStore().addTask(title, description)
+  getTasks()
+}
+
+const tasks = computed(() => useTaskStore().$state.tasks)
+
+const getTasks = async () => {
+  tasks.value = await useTaskStore().fetchTasks()
+
+}
+
+getTasks()
+
+
+
 
 </script>
 
