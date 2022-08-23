@@ -1,13 +1,25 @@
 <template>
   <div>
     <div class="container">
-      <div class="task-container" v-for="task in tasks" :key="task.id">
-        <CardIcons :id = "task.id" @delete-task = "deleteTask"/>
-        <h1>{{task.title}}</h1>
-        <p>{{task.description}}</p>
-        
-
+      <div class="task-container">
+        <!-- <CardIcons :id = "task.id" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
+        <div class="task-text">
+          <h1>{{task.title}}</h1>
+          <p>{{task.description}}</p>
+        </div>
+        <div class="task-edits">
+          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-circle-check"></i>
+          <i @click="toggleEdit" class="fa-solid fa-pen-to-square"></i>
+          <i @click="deleteTask(id)" class="fa-solid fa-trash"></i>
+        </div>
+        <div class="inputs" v-if="editTaskInputs">
+          <input type="text" v-model="newTitle">
+          <input type="text" v-model="newDescription">
+          <button @click.prevent="editTaskFunc">Edit</button>
+        </div>
       </div>
+      
   </div>
   </div>
 </template>
@@ -19,14 +31,56 @@
 
 
 const emit = defineEmits([
-  "edit-task", "delete-task"
+  "editTaskChild", "deleteTaskChild"
 ])
 
-const props = defineProps(["tasks", "id"])
+const props = defineProps(["task"])
 
-const deleteTask = (id) => {
-    emit("delete-task", id)
+// const deleteTask = (id) => {
+//     emit("delete-task", id)
+// }
+
+// const editTaskFunc = (id) => {
+//   emit("edit-task", id)
+// }
+
+// Initialy hidden
+const editTaskInputs = ref(false) 
+
+const toggleEdit = () => {
+  editTaskInputs.value = !editTaskInputs.value
+  newTitle.value = props.task.title
+  newDescription.value = props.task.description
 }
+
+const newTitle = ref("")
+
+const newDescription = ref("")
+
+const errorMsg = ref("")
+
+const editTaskFunc = () => {
+  if(newTitle.value === "" && newDescription.value === ""){
+    errorMsg.value = "This looks empty..."
+    setTimeout(() => {
+      errorMsg.value = null
+    }, 3000)
+  }
+  else
+  {
+    const editValues = {
+      oldValue: props.task,
+      newValueTitle: newTitle.value, 
+      newValueDescription: newDescription.value
+      
+    }
+    emit("editTaskChild", editValues)
+    }
+  }
+  const deleteTask = () => {
+    emit("deleteTaskChild", props.task)
+}
+
 
 
 

@@ -12,9 +12,10 @@
         ></i>
         <i @click="editTask = !editTask" class="fa-solid fa-pen-to-square"></i>
         <i @click="deleteTask(id)" class="fa-solid fa-trash"></i>
-        <div class="icon-inputs">
-            <input v-if="editTask" type="text" placeholder="Edit your title">
-            <input v-if="editTask" type="text" placeholder="Edit your description">
+        <div class="icon-inputs" v-if="editTask">
+            <input type="text" placeholder="Edit your title" v-model="newTitle">
+            <input type="text" placeholder="Edit your description" v-model="newDescription">
+            <button @click="editTaskFunc">Edit</button>
         </div>
     </div>
 </template>
@@ -31,6 +32,10 @@ const props = defineProps(["id"])
 
 const toggleTask = computed(() => (taskComplete.value ? false : true));
 
+const newTitle = ref("")
+
+const newDescription = ref("")
+
 const taskComplete = ref(false);
 
 const toggleEditTask = computed(() => (editTask.value ? false : true));
@@ -39,6 +44,13 @@ const editTask = ref(false);
 
 const deleteTask = (id) => {
     emit("delete-task", id)
+}
+
+const editTaskFunc = () => {
+    // const changeValues = {
+    //     oldValue = props.
+    // }
+    emit("edit-task", newTitle.value, newDescription.value)
 }
 </script>
 

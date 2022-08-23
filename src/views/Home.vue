@@ -1,7 +1,8 @@
 <template>
   <Nav />
-  <NewTask @add-new-task = "addNewTask"/>
-  <TaskItem :tasks = "tasks" @delete-task = "deleteTask"/>
+  <NewTask @addNewTask = "addNewTask"/>
+  <!-- <TaskItem :tasks = "tasks" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
+  <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" @editTaskChild = "editTaskFunc" @deleteTaskChild = "deleteTask" />
   <router-view />
 </template>
 
@@ -10,32 +11,40 @@ import Nav from '../components/Nav.vue'
 import NewTask from '../components/NewTask.vue'
 import TaskItem from '../components/TaskItem.vue'
 import {useTaskStore} from '../stores/task'
-import { ref, computed} from 'vue'
+import { ref, computed, onMounted} from 'vue'
 
 
-const addNewTask = async (title, description) => {
-  
-  useTaskStore().addTask(title, description)
-  getTasks()
+//function to fetch tasks
+const taskStore = useTaskStore()
+onMounted(() => {
+  taskStore.fetchTasks()
+})
+
+// const addNewTask = async (title, description) => {
+//   useTaskStore().addTask(title, description)
+//   getTasks()
+// }
+
+const addNewTask = async (newTask) => {
+  const response = await taskStore.addTask(newTask.title, newTask.description)
+  taskStore.fetchTasks()
 }
 
-const tasks = computed(() => useTaskStore().$state.tasks)
-
-const getTasks = async () => {
-  tasks.value = await useTaskStore().fetchTasks()
-
-}
-
-getTasks()
-
-const deleteTask = (id) => {
+const deleteTask = (i) => {
     let proceed = confirm("Are you sure you want to delete this task?")
     if (proceed){
-      useTaskStore().deleteTask(id)
-      getTasks()
+      useTaskStore().deleteTask(i.id)
       }
-    
-    
+    taskStore.fetchTasks()
+}
+
+const editTaskFunc = async (item) => {
+const newTitle = item.newValueTitle
+console.log(item)
+const newDescription = item.newValueDescription
+const editId = item.oldValue.id
+  await useTaskStore().editTask(newTitle, newDescription, editId)
+  taskStore.fetchTasks()
 }
 
 
