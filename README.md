@@ -9,6 +9,10 @@ Implement sing in and sign up pages
 Implement tasks and log out
 
 
-### 32/08
+### 23/08
 
 Implementing edit and delete tasks
+
+### 24/08
+
+toggle and CSS
