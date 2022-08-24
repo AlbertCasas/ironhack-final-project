@@ -1,25 +1,21 @@
 <template>
   <div class="container">
-    <div class="err-msg" v-if="errorMsg">
-      <p>{{errorMsg}}</p>
-    </div>
     <form class="form" @submit.prevent="signIn">
+      <p class="err-msg" v-if="errorMsg">{{errorMsg}}</p>
       <img src="https://i.ibb.co/5j0R8qr/recurso-blue.png" alt="logo">
       <h1>Log In to TaskApp</h1>
-      <p>Start Organazing your Tasks Today!</p>
+      <p>Start Organizing your Tasks Today!</p>
       <div class="form-input">
-        <label for="email">Email</label>
         <input placeholder="Enter your email" class="input" type="email" required id="email" v-model="email">
       </div>
-      <div class="form-input">
-        <label for="password">Password</label>
+      <div class="form-input password">
         <input placeholder="Enter your password" class="input" :type="passwordFieldType" id="password" v-model="password">
-        <i @click="hidePassword = !hidePassword" class="fa-solid fa-eye"></i>
+        <i @click="hidePassword = !hidePassword" class="fa-solid fa-eye icon"></i>
       </div>
       <button class="button" type="submit">Log In</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
     </form>
-    <img class="photo" src="https://assets.entrepreneur.com/content/3x2/2000/20190517204006-GettyImages-924558574.jpeg" alt="signin-img">
+    <div class="photo-container"></div>
   </div>
   
   
@@ -67,17 +63,18 @@ const signIn = async () => {
     // hides error message
     setTimeout(() => {
       errorMsg.value = null;
-    }, 6000);
+    }, 4000);
   }
 };
 </script>
 
-<style>
+<style scoped>
+
 
 .err-msg {
   color: red;
   text-align: center;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
 .form {
@@ -115,6 +112,17 @@ const signIn = async () => {
   height: 2rem;
 }
 
+.password {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 1rem;
+  top: 0.55rem;
+  color: #427AA1;
+}
+
 
 .button {
   background-color: #427AA1;
@@ -132,7 +140,32 @@ const signIn = async () => {
   cursor: pointer;
 }
 
-.photo {
+.photo-container {
   width: 100%;
+  height: 50vh;
+  background: url(https://assets.entrepreneur.com/content/3x2/2000/20190517204006-GettyImages-924558574.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-color: red;
+}
+
+@media only screen and (min-width: 550px){
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form {
+    width: 50%;
+  }
+
+  .photo-container {
+    width: 50%;
+    height: 100vh;
+  }
+
+  
+  
 }
 </style>

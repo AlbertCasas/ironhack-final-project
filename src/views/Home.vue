@@ -2,7 +2,10 @@
   <Nav />
   <NewTask @addNewTask = "addNewTask"/>
   <!-- <TaskItem :tasks = "tasks" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
-  <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" @editTaskChild = "editTaskFunc" @deleteTaskChild = "deleteTask" @toggleTaskChild = "toggleTaskFunc" />
+  <div id="task-item">
+    <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" @editTaskChild = "editTaskFunc" @deleteTaskChild = "deleteTask" @toggleTaskChild = "toggleTaskFunc" />
+  </div>
+  <Footer />
   <router-view />
 </template>
 
@@ -10,6 +13,7 @@
 import Nav from '../components/Nav.vue'
 import NewTask from '../components/NewTask.vue'
 import TaskItem from '../components/TaskItem.vue'
+import Footer from '../components/Footer.vue'
 import {useTaskStore} from '../stores/task'
 import { ref, computed, onMounted} from 'vue'
 
@@ -60,9 +64,13 @@ const toggleTaskFunc = async (item) => {
 </script>
 
 
-<style>
+<style scoped>
 
-
+#task-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 </style>
 
 <!-- 

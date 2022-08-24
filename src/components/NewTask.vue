@@ -1,16 +1,17 @@
 <template>
   <div>
-    <div v-if="errorMsg">
-      <p>{{ errorMsg }}</p>
-    </div>
-    <div>
-      <form>
-        <h1>Add a new task</h1>
+    
+    <p v-if="errorMsg" class="err-msg">{{ errorMsg }}</p>
+    
+    
+      <form class="form">
+        <h1 class="title">Add a New Task</h1>
+        <p>and start organizing your life!</p>
         <input type="text" placeholder="Enter task title" required v-model="taskTitle"/>
         <input type="text" placeholder="Enter task description" required v-model="taskDescription"/>
         <button @click.prevent="addNewTask" type="submit">Add Task</button>
       </form>
-    </div>
+    
   </div>
 </template>
 
@@ -65,4 +66,56 @@ const addNewTask = async () => {
 
 </script>
 
-<style></style>
+<style scoped>
+
+.err-msg {
+  color: red;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.form p {
+  font-size: 1.2rem;
+  color: #427AA1;
+  font-weight: 600;
+}
+  
+
+.title {
+  font-size: 2.2rem;
+  color: #427AA1;
+}
+
+.form input {
+  padding: 0.5rem;
+  width: 50%;
+  border-radius: 3px;
+  border-color: #427AA1;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.form button {
+  padding: 0.5rem;
+  width: 50%;
+  background-color: #427AA1;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+}
+
+.form button:hover {
+  cursor: pointer;
+}
+
+</style>

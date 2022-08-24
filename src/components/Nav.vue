@@ -1,7 +1,11 @@
 <template>
   <header>
     <nav class="navbar">
-      <h1>Task App</h1>
+      <div class="logo">
+        <img src="https://i.ibb.co/L6BKq4t/recurso.png" alt="logo">
+        <h1>Task App</h1>
+
+      </div>
       <div class="user">
         <p>Welcome {{cleanEmail}}</p>
         <button @click="signOut">Sign Out</button>
@@ -46,6 +50,23 @@ const signOut = async () => {
   align-items: center;
 }
 
+.logo {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+
+.logo img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.logo h1 {
+  font-size: 2.5rem;
+  color: white;
+}
+
 .navbar h1 {
   font-size: 2rem;
 }
@@ -53,13 +74,23 @@ const signOut = async () => {
 .user {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   gap: 1rem;
+  font-size: 1rem;
+  color: white;
 }
 
 .user button {
-  background-color: transparent;
+  padding: 0.5rem;
+  background-color: white;
   border: none;
-  color: blue;
+  font-size: 1rem;
+  color: #427AA1;
+  border-radius: 3px;
+}
+
+.user button:hover {
+  cursor: pointer;
 }
 
 </style>

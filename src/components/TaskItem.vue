@@ -1,5 +1,5 @@
 <template>
-  <div>
+  
     <div class="container">
       <div class="task-container">
         <!-- <CardIcons :id = "task.id" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
@@ -9,7 +9,7 @@
         </div>
         <div class="task-edits">
           <div @click="toggleTaskFunc">
-          <i v-if="!toggleTask" class="fa-solid fa-circle"></i>
+          <i v-if="!task.is_complete" class="fa-solid fa-circle"></i>
           <i v-else class="fa-solid fa-circle-check"></i>
           </div>
           <i @click="toggleEdit" class="fa-solid fa-pen-to-square"></i>
@@ -18,12 +18,12 @@
         <div class="inputs" v-if="editTaskInputs">
           <input type="text" v-model="newTitle">
           <input type="text" v-model="newDescription">
-          <button @click.prevent="editTaskFunc" @click="toggleEdit">Edit</button>
+          <button @click.prevent="editTaskFunc" @click="toggleEdit">Edit Task</button>
         </div>
       </div>
       
   </div>
-  </div>
+  
 </template>
 
 <script setup>
@@ -111,23 +111,67 @@ const editTaskFunc = () => {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
-
 .task-container {
-  background-color: beige;
-  width: 20rem;
-  height: 10rem;
+  background-color: #427AA1;
+  width: 25rem;
+  min-height: 12rem;
   margin: 1rem;
+  border-radius: 6px;
+  box-shadow: 0.2rem 0.2rem 0.5rem gray;
+}
+
+.task-text {
+  color: white;
+  text-align: center;
 }
 
 .task-container h1 {
-  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
 }
 
 .task-container p {
-  text-align: center;
+  height: 6.5rem;
+}
+
+.task-edits {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+
+.task-edits i:hover {
+  cursor: pointer;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.inputs input {
+  padding: 0.5rem;
+  width: 70%;
+}
+
+.inputs button {
+  padding: 0.5rem;
+  width: 70%;
+  color: #427AA1;
+  font-size: 0.9rem;
+}
+
+.inputs button:hover {
+  cursor: pointer;
 }
 
 </style>
