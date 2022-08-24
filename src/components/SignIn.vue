@@ -1,11 +1,12 @@
 <template>
   <div class="container">
-    <div v-if="errorMsg">
+    <div class="err-msg" v-if="errorMsg">
       <p>{{errorMsg}}</p>
     </div>
     <form class="form" @submit.prevent="signIn">
+      <img src="https://i.ibb.co/5j0R8qr/recurso-blue.png" alt="logo">
       <h1>Log In to TaskApp</h1>
-      <p>Start Organazing your Tasks Today</p>
+      <p>Start Organazing your Tasks Today!</p>
       <div class="form-input">
         <label for="email">Email</label>
         <input placeholder="Enter your email" class="input" type="email" required id="email" v-model="email">
@@ -73,11 +74,24 @@ const signIn = async () => {
 
 <style>
 
+.err-msg {
+  color: red;
+  text-align: center;
+  margin-top: 2rem;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
   padding: 2rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form img {
+  width: 2rem;
+  text-align: center;
 }
 
 .form h1 {
@@ -94,7 +108,7 @@ const signIn = async () => {
 .form-input {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  width: 80%;
 }
 
 .input {
@@ -111,7 +125,11 @@ const signIn = async () => {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-top: 1rem;
+  width: 80%;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .photo {

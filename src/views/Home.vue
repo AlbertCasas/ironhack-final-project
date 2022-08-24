@@ -2,7 +2,7 @@
   <Nav />
   <NewTask @addNewTask = "addNewTask"/>
   <!-- <TaskItem :tasks = "tasks" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
-  <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" @editTaskChild = "editTaskFunc" @deleteTaskChild = "deleteTask" />
+  <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" @editTaskChild = "editTaskFunc" @deleteTaskChild = "deleteTask" @toggleTaskChild = "toggleTaskFunc" />
   <router-view />
 </template>
 
@@ -30,12 +30,15 @@ const addNewTask = async (newTask) => {
   taskStore.fetchTasks()
 }
 
-const deleteTask = (i) => {
+const deleteTask = (item) => {
+  console.log(item)
     let proceed = confirm("Are you sure you want to delete this task?")
     if (proceed){
-      useTaskStore().deleteTask(i.id)
+      useTaskStore().deleteTask(item.id)
       }
-    taskStore.fetchTasks()
+      setTimeout(() => {
+        taskStore.fetchTasks()
+      },200)
 }
 
 const editTaskFunc = async (item) => {
@@ -45,6 +48,12 @@ const newDescription = item.newValueDescription
 const editId = item.oldValue.id
   await useTaskStore().editTask(newTitle, newDescription, editId)
   taskStore.fetchTasks()
+}
+
+const toggleTaskFunc = async (item) => {
+  const response = await taskStore.toggleTask(item.is_complete, item.id)
+  taskStore.fetchTasks()
+  
 }
 
 

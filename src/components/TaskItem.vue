@@ -8,15 +8,17 @@
           <p>{{task.description}}</p>
         </div>
         <div class="task-edits">
-          <i class="fa-solid fa-circle"></i>
-          <i class="fa-solid fa-circle-check"></i>
+          <div @click="toggleTaskFunc">
+          <i v-if="!toggleTask" class="fa-solid fa-circle"></i>
+          <i v-else class="fa-solid fa-circle-check"></i>
+          </div>
           <i @click="toggleEdit" class="fa-solid fa-pen-to-square"></i>
           <i @click="deleteTask(id)" class="fa-solid fa-trash"></i>
         </div>
         <div class="inputs" v-if="editTaskInputs">
           <input type="text" v-model="newTitle">
           <input type="text" v-model="newDescription">
-          <button @click.prevent="editTaskFunc">Edit</button>
+          <button @click.prevent="editTaskFunc" @click="toggleEdit">Edit</button>
         </div>
       </div>
       
@@ -31,10 +33,10 @@
 
 
 const emit = defineEmits([
-  "editTaskChild", "deleteTaskChild"
+  "editTaskChild", "deleteTaskChild", "toggleTaskChild"
 ])
 
-const props = defineProps(["task"])
+const props = defineProps(["task", "id"])
 
 // const deleteTask = (id) => {
 //     emit("delete-task", id)
@@ -53,11 +55,19 @@ const toggleEdit = () => {
   newDescription.value = props.task.description
 }
 
+const toggleTask = ref(false)
+
 const newTitle = ref("")
 
 const newDescription = ref("")
 
 const errorMsg = ref("")
+
+const toggleTaskFunc = (id) => {
+  toggleTask.value = !toggleTask.value
+  emit("toggleTaskChild", props.task)
+
+}
 
 const editTaskFunc = () => {
   if(newTitle.value === "" && newDescription.value === ""){

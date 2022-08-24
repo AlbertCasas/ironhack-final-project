@@ -43,5 +43,12 @@ export const useTaskStore = defineStore("tasks", {
           )
         .match({ id: id });
     },
+
+    async toggleTask(is_complete, id) {
+      const {data, error} = await supabase
+      .from("tasks")
+      .update({is_complete: !is_complete})
+      .match({id: id});
+    }
   },
 });
