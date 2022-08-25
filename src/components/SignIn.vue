@@ -62,7 +62,7 @@ const signIn = async () => {
     // hides error message
     setTimeout(() => {
       errorMsg.value = null;
-    }, 4000);
+    }, 5000);
   }
 };
 </script>
@@ -92,19 +92,21 @@ const signIn = async () => {
 
 .form h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 2.3rem;
   text-align: center;
   color: #427AA1;
 }
 
 .form p {
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .form-input {
   display: flex;
   flex-direction: column;
   width: 80%;
+  font-size: 1rem;
 }
 
 .input {
@@ -119,8 +121,10 @@ const signIn = async () => {
 .icon {
   position: absolute;
   right: 1rem;
-  top: 0.55rem;
+  top: 1rem;
   color: #427AA1;
+  width: 1rem;
+  height: 1rem;
 }
 
 .icon:hover {
@@ -132,7 +136,7 @@ const signIn = async () => {
   background-color: #427AA1;
   border: none;
   color: white;
-  padding: 10px 10px;
+  padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
