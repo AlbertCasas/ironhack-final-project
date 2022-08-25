@@ -1,5 +1,5 @@
 <template>
-  
+  <div id="task-item">
     <div class="container">
       <div class="task-container">
         <!-- <CardIcons :id = "task.id" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
@@ -21,7 +21,7 @@
           <button @click.prevent="editTaskFunc" @click="toggleEdit">Edit Task</button>
         </div>
       </div>
-      
+    </div> 
   </div>
   
 </template>
@@ -129,12 +129,12 @@ const editTaskFunc = () => {
 }
 
 .task-container h1 {
-  padding: 1rem;
+  padding: 1.5rem;
   font-size: 1.5rem;
 }
 
 .task-container p {
-  height: 6.5rem;
+  height: 12rem;
 }
 
 .task-edits {

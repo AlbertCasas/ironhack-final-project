@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="new-task">
     
     <p v-if="errorMsg" class="err-msg">{{ errorMsg }}</p>
     
@@ -67,6 +67,10 @@ const addNewTask = async () => {
 </script>
 
 <style scoped>
+
+#new-task {
+  height: 33vh;
+}
 
 .err-msg {
   color: red;

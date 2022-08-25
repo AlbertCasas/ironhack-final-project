@@ -1,11 +1,15 @@
 <template>
+  <div id="main-container">
   <Nav />
   <NewTask @addNewTask = "addNewTask"/>
   <!-- <TaskItem :tasks = "tasks" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
   <div id="task-item">
     <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" @editTaskChild = "editTaskFunc" @deleteTaskChild = "deleteTask" @toggleTaskChild = "toggleTaskFunc" />
   </div>
+  <div id="footer">
   <Footer />
+  </div>
+  </div>
   <router-view />
 </template>
 
@@ -66,10 +70,20 @@ const toggleTaskFunc = async (item) => {
 
 <style scoped>
 
+#main-container {
+  display: flex;
+  flex-direction: column;
+}
+
 #task-item {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 43.4vh;
+}
+
+#footer {
+  justify-self: end;
 }
 </style>
 
