@@ -18,7 +18,7 @@
   background-color: #427AA1;
   display: flex;
   flex-direction: column;
-  height: 9rem;
+  height: 10rem;
   justify-content: space-evenly;
   align-items: center;
 }

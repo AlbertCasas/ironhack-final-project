@@ -29,7 +29,6 @@
 <script setup>
   import {useTaskStore} from '../stores/task'
   import {ref, computed} from 'vue'
-  import CardIcons from '../components/CardIcons.vue'
 
 
 const emit = defineEmits([
@@ -38,13 +37,6 @@ const emit = defineEmits([
 
 const props = defineProps(["task", "id"])
 
-// const deleteTask = (id) => {
-//     emit("delete-task", id)
-// }
-
-// const editTaskFunc = (id) => {
-//   emit("edit-task", id)
-// }
 
 // Initialy hidden
 const editTaskInputs = ref(false) 
@@ -91,20 +83,6 @@ const editTaskFunc = () => {
     emit("deleteTaskChild", props.task)
 }
 
-
-
-
-
-// const tasks = computed(() => useTaskStore().fetchTasks())
-
-// const getTasks = async () => {
-//   tasks.value = await useTaskStore().fetchTasks()
-
-// }
-
-// getTasks()
-
-// const props = defineProps(["ENTER-PROP-HERE"]);
 </script>
 
 <style scoped>
