@@ -108,7 +108,8 @@ const signIn = async () => {
 }
 
 .input {
-  height: 2rem;
+  padding: 1rem;
+  border-radius: 3px;
 }
 
 .password {
@@ -137,6 +138,7 @@ const signIn = async () => {
   display: inline-block;
   font-size: 16px;
   width: 80%;
+  border-radius: 3px;
 }
 
 .button:hover {

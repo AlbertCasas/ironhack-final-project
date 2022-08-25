@@ -87,10 +87,11 @@ const addNewTask = async () => {
 }
 
 .form input {
-  padding: 0.5rem;
+  padding: 1rem;
   width: 50%;
   border-radius: 3px;
   border-color: #427AA1;
+  font-size: 1rem;
 }
 
 .form input:focus {
@@ -98,7 +99,7 @@ const addNewTask = async () => {
 }
 
 .form button {
-  padding: 0.5rem;
+  padding: 1rem;
   width: 50%;
   background-color: #427AA1;
   color: white;
