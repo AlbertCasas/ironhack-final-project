@@ -112,7 +112,7 @@ const editTaskFunc = () => {
 }
 
 .task-container p {
-  height: 12rem;
+  height: 13rem;
 }
 
 .task-edits {

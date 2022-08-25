@@ -74,7 +74,7 @@ const toggleTaskFunc = async (item) => {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  min-height: 43.4vh;
+  min-height: 44vh;
 }
 
 #footer {
