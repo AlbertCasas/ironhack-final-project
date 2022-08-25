@@ -100,6 +100,7 @@ const signIn = async () => {
 .form p {
   text-align: center;
   font-size: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .form-input {
