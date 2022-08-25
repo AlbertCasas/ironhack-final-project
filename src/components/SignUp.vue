@@ -63,6 +63,7 @@ const signUp = async () => {
       })
       if (error) throw error;
       redirect.push('login')
+      alert('a verification email has been sent to your email address')
     }
     
     catch(error){
