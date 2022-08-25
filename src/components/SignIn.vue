@@ -10,15 +10,14 @@
       </div>
       <div class="form-input password">
         <input placeholder="Enter your password" class="input" :type="passwordFieldType" id="password" v-model="password">
-        <i @click="hidePassword = !hidePassword" class="fa-solid fa-eye icon"></i>
+        <i v-if="hidePassword === true" @click="hidePassword = !hidePassword" class="fa-solid fa-eye icon"></i>
+        <i v-else @click="hidePassword = !hidePassword" class="fa-solid fa-eye-slash icon"></i>
       </div>
       <button class="button" type="submit">Log In</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
     </form>
     <div class="photo-container"></div>
   </div>
-  
-  
 </template>
 
 <script setup>
@@ -121,6 +120,10 @@ const signIn = async () => {
   right: 1rem;
   top: 0.55rem;
   color: #427AA1;
+}
+
+.icon:hover {
+  cursor: pointer;
 }
 
 
