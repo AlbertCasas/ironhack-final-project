@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <form class="form" @submit.prevent="signUp">
-      <p class="err-msg" v-if="errorMsg">{{errorMsg}}</p>
       <img src="https://i.ibb.co/5j0R8qr/recurso-blue.png" alt="logo">
       <h1>Register to TaskApp</h1>
       <p>Start Organazing your Tasks Today!</p>
@@ -14,6 +13,7 @@
       <div class="form-input">
         <input placeholder="Confirm your password" class="input" type="password" id="confirmPassword" v-model="confirmPassword">
       </div>
+      <p class="err-msg size" v-if="errorMsg">{{errorMsg}}</p>
       <button class="button" type="submit">Register</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
     </form>
@@ -77,16 +77,17 @@ const signUp = async () => {
 
   setTimeout(() => {
     errorMsg.value = null
-  }, 3000)  
+  }, 5000)  
 };
 
 </script>
 
 <style scoped>
-.err-msg {
+.err-msg.size {
   color: red;
   text-align: center;
-  margin: 2rem 0;
+  margin: 0;
+  font-size: 1rem;
 }
 
 .form {

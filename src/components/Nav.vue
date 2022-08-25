@@ -33,7 +33,7 @@ const cleanEmail = removeEmail[0]
 
 // async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
 const signOut = async () => {
-  await useUserStore().signOut;
+  await useUserStore().signOut();
   redirect.push({path:"/auth/login"});}
 
 </script>

@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <form class="form" @submit.prevent="signIn">
-      <p class="err-msg" v-if="errorMsg">{{errorMsg}}</p>
       <img src="https://i.ibb.co/5j0R8qr/recurso-blue.png" alt="logo">
       <h1>Log In to TaskApp</h1>
       <p>Start Organizing your Tasks Today!</p>
@@ -13,6 +12,7 @@
         <i v-if="hidePassword === true" @click="hidePassword = !hidePassword" class="fa-solid fa-eye icon"></i>
         <i v-else @click="hidePassword = !hidePassword" class="fa-solid fa-eye-slash icon"></i>
       </div>
+      <p class="err-msg size" v-if="errorMsg">{{errorMsg}}</p>
       <button class="button" type="submit">Log In</button>
       <PersonalRouter :route="route" :buttonText="buttonText" />
     </form>
@@ -62,18 +62,18 @@ const signIn = async () => {
     // hides error message
     setTimeout(() => {
       errorMsg.value = null;
-    }, 5000);
+    }, 50000);
   }
 };
 </script>
 
 <style scoped>
 
-
-.err-msg {
+.err-msg.size {
   color: red;
   text-align: center;
-  margin: 2rem 0;
+  margin: 0;
+  font-size: 1rem;
 }
 
 .form {
