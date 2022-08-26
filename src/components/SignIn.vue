@@ -83,7 +83,7 @@ const signIn = async () => {
 .form {
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+
   padding: 2rem;
   align-items: center;
   
