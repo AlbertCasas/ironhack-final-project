@@ -1,10 +1,10 @@
 <template>
   <div class="footer">
     <div class="logo">
-      <img src="https://i.ibb.co/L6BKq4t/recurso.png" alt="logo">
-      <h1>TaskApp</h1>
+      <img src="https://i.im.ge/2022/08/26/OwFsi4.unnamed.png" alt="logo">
+      <h1>Note It!</h1>
     </div>
-    <p>© 2022 TaskApp. All rights reserved. Built by Albert Casas</p>
+    <p>© 2022 Note It!. All rights reserved. Built by Albert Casas</p>
   </div>
 </template>
 
@@ -15,6 +15,7 @@
 <style>
 
 .footer {
+  margin-top: 5rem;
   background-color: #427AA1;
   display: flex;
   flex-direction: column;
@@ -35,8 +36,8 @@
 
 
 .logo img {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .logo h1 {

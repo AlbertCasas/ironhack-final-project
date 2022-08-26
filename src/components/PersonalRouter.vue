@@ -15,7 +15,7 @@ defineProps({
 
 <style>
 .router-link {
-  color: #427AA1;
+  color: white;
   text-decoration: none;
   font-weight: 600;
 }

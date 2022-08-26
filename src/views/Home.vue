@@ -3,7 +3,7 @@
   <Nav />
   <NewTask @addNewTask = "addNewTask"/>
   <!-- <TaskItem :tasks = "tasks" @delete-task = "deleteTask" @edit-task = "editTaskFunc"/> -->
-  <div id="task-item">
+  <div class="task-item">
     <TaskItem v-for="task in taskStore.tasks" :key="task.id" :task="task" @editTaskChild = "editTaskFunc" @deleteTaskChild = "deleteTask" @toggleTaskChild = "toggleTaskFunc" />
   </div>
   <div id="footer">
@@ -36,7 +36,7 @@ const addNewTask = async (newTask) => {
 
 const deleteTask = (item) => {
   console.log(item)
-    let proceed = confirm("Are you sure you want to delete this task?")
+    let proceed = confirm("Are you sure you want to delete this note?")
     if (proceed){
       useTaskStore().deleteTask(item.id)
       }
@@ -70,7 +70,7 @@ const toggleTaskFunc = async (item) => {
   flex-direction: column;
 }
 
-#task-item {
+.task-item {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

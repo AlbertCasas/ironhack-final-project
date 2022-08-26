@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <form class="form" @submit.prevent="signIn">
-      <img src="https://i.ibb.co/5j0R8qr/recurso-blue.png" alt="logo">
-      <h1>Log In to TaskApp</h1>
-      <p>Start Organizing your Tasks Today!</p>
+      <img src="https://i.im.ge/2022/08/26/OwFsi4.unnamed.png" alt="logo">
+      <h1>Log In to Note It!</h1>
+      <p>Start Organizing your Notes Today!</p>
       <div class="form-input">
         <input placeholder="Enter your email" class="input" type="email" required id="email" v-model="email">
       </div>
@@ -69,8 +69,12 @@ const signIn = async () => {
 
 <style scoped>
 
+.container {
+  background-color: #427AA1;
+}
+
 .err-msg.size {
-  color: red;
+  color: white;
   text-align: center;
   margin: 0;
   font-size: 1rem;
@@ -82,25 +86,27 @@ const signIn = async () => {
   margin: 1rem 0;
   padding: 2rem;
   align-items: center;
-  gap: 1rem;
+  
 }
 
 .form img {
-  width: 2rem;
+  width: 3rem;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .form h1 {
   margin: 0;
   font-size: 2.3rem;
   text-align: center;
-  color: #427AA1;
+  color: white;
 }
 
 .form p {
   text-align: center;
   font-size: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  color: white;
 }
 
 .form-input {
@@ -108,6 +114,7 @@ const signIn = async () => {
   flex-direction: column;
   width: 80%;
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .input {
@@ -134,16 +141,18 @@ const signIn = async () => {
 
 
 .button {
-  background-color: #427AA1;
+  background-color: #d9da00;
   border: none;
-  color: white;
+  color: #427AA1;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: 600;
   width: 80%;
   border-radius: 3px;
+  margin-bottom: 1rem;
 }
 
 .button:hover {
@@ -175,7 +184,5 @@ const signIn = async () => {
     height: 100vh;
   }
 
-  
-  
 }
 </style>

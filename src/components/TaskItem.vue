@@ -16,9 +16,9 @@
           <i @click="deleteTask(id)" class="fa-solid fa-trash"></i>
         </div>
         <div class="inputs" v-if="editTaskInputs">
-          <input type="text" v-model="newTitle">
-          <input type="text" v-model="newDescription">
-          <button @click.prevent="editTaskFunc" @click="toggleEdit">Edit Task</button>
+          <input type="text" v-model="newTitle" placeholder="Edit your note title">
+          <input type="text" v-model="newDescription" placeholder="Edit your note description">
+          <button @click.prevent="editTaskFunc" @click="toggleEdit">Edit Note</button>
         </div>
       </div>
     </div> 
@@ -87,36 +87,41 @@ const editTaskFunc = () => {
 
 <style scoped>
 
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+
 .container {
   display: flex;
   margin-bottom: 2rem;
 }
 
 .task-container {
-  background-color: #427AA1;
+  background-color: #d9da00;
   width: 25rem;
   min-height: 12rem;
   margin: 1rem;
-  border-radius: 6px;
   box-shadow: 0.2rem 0.2rem 0.5rem gray;
 }
 
 .task-text {
-  color: white;
+  color: #427AA1;
   text-align: center;
 }
 
 .task-container h1 {
   padding: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-family: "Architects Daughter";
 }
 
 .task-container p {
   height: 13rem;
+  font-size: 1.7rem;
+  font-family: "Architects Daughter";
 }
 
 .task-edits {
-  color: white;
+  color: #427AA1;
   display: flex;
   justify-content: space-around;
   margin-bottom: 1rem;
@@ -144,8 +149,10 @@ const editTaskFunc = () => {
 .inputs button {
   padding: 0.5rem;
   width: 70%;
-  color: #427AA1;
+  color: white;
   font-size: 0.9rem;
+  background-color: #427AA1;
+  border: none;
 }
 
 .inputs button:hover {

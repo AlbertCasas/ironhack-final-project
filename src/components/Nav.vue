@@ -2,8 +2,8 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <img src="https://i.ibb.co/L6BKq4t/recurso.png" alt="logo">
-        <h1>Task App</h1>
+        <img src="https://i.im.ge/2022/08/26/OwFsi4.unnamed.png" alt="logo">
+        <h1>Note It!</h1>
 
       </div>
       <div class="user">
@@ -58,8 +58,8 @@ const signOut = async () => {
 
 
 .logo img {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .logo h1 {
@@ -82,7 +82,7 @@ const signOut = async () => {
 
 .user button {
   padding: 0.5rem;
-  background-color: white;
+  background-color: #d9da00;
   border: none;
   font-size: 1rem;
   color: #427AA1;
