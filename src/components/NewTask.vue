@@ -1,7 +1,6 @@
 <template>
   <div id="new-task">
     
-    <p v-if="errorMsg" class="err-msg">{{ errorMsg }}</p>
     
     
       <form class="form">
@@ -9,6 +8,7 @@
         <p>and start organizing your life!</p>
         <input type="text" placeholder="Enter note title" required v-model="taskTitle"/>
         <input type="text" placeholder="Enter note description" required v-model="taskDescription"/>
+        <p v-if="errorMsg" class="err-msg color">{{ errorMsg }}</p>
         <button @click.prevent="addNewTask" type="submit">Add Note</button>
       </form>
     
@@ -62,9 +62,10 @@ const addNewTask = async () => {
   margin-bottom: 5rem;
 }
 
-.err-msg {
+.err-msg.color {
   color: red;
   text-align: center;
+  font-size: 1rem;
 }
 
 .form {
